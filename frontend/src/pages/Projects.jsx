@@ -54,7 +54,7 @@ const Projects = () => {
       setForm({
         name: res.data.name || '',
         description: res.data.description || '',
-        member_ids: res.data.members?.map(m => m.id) || []
+        member_ids: res.data.members?.map(m => String(m._id || m.id)) || []
       });
       setShowForm(true);
     } catch (err) {
@@ -68,18 +68,17 @@ const Projects = () => {
     fetchProjects();
   };
 
-  const toggleMember = (id) => {
+  const toggleMember = (uid) => {
     setForm(prev => ({
       ...prev,
-      member_ids: prev.member_ids.includes(id)
-        ? prev.member_ids.filter(m => m !== id)
-        : [...prev.member_ids, id]
+      member_ids: prev.member_ids.includes(uid)
+        ? prev.member_ids.filter(m => m !== uid)
+        : [...prev.member_ids, uid]
     }));
   };
 
   const visibleProjects = useMemo(() => {
     const query = search.trim().toLowerCase();
-
     return projects
       .filter(project => {
         if (!query) return true;
@@ -130,16 +129,19 @@ const Projects = () => {
               <div className="member-select">
                 <label>Add Members:</label>
                 <div className="member-list">
-                  {users.map(u => (
-                    <label key={u.id} className="member-item">
-                      <input
-                        type="checkbox"
-                        checked={form.member_ids.includes(u.id)}
-                        onChange={() => toggleMember(u.id)}
-                      />
-                      {u.name} ({u.role})
-                    </label>
-                  ))}
+                  {users.map(u => {
+                    const uid = String(u._id || u.id);
+                    return (
+                      <label key={uid} className="member-item">
+                        <input
+                          type="checkbox"
+                          checked={form.member_ids.includes(uid)}
+                          onChange={() => toggleMember(uid)}
+                        />
+                        {u.name} ({u.role})
+                      </label>
+                    );
+                  })}
                 </div>
               </div>
               <div className="form-actions">
