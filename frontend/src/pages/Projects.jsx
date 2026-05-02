@@ -129,7 +129,7 @@ const Projects = () => {
               <div className="member-select">
                 <label>Add Members:</label>
                 <div className="member-list">
-                  {users.map(u => {
+                  {users.filter(u => String(u._id || u.id) !== String(user.id)).map(u => {
                     const uid = String(u._id || u.id);
                     return (
                       <label key={uid} className="member-item">
