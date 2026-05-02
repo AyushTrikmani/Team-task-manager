@@ -7,17 +7,17 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate('/');
   };
 
   return (
     <nav className="navbar">
-      <div className="nav-brand">🗂️ TaskManager</div>
+      <Link to="/" className="nav-brand">🗂️ TaskManager</Link>
       <div className="nav-links">
         <Link to="/dashboard">Dashboard</Link>
         <Link to="/projects">Projects</Link>
         <span className="nav-user">
-          {user?.name} 
+          {user?.name}
           <span className={`role-badge ${user?.role}`}>{user?.role}</span>
         </span>
         <button onClick={handleLogout} className="btn-logout">Logout</button>
