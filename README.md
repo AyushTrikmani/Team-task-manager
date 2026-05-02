@@ -12,10 +12,10 @@ A full-stack team task management application built with React, Node.js, Express
 
 | Name | Email | Password | Role |
 |------|-------|----------|------|
-| Rahul Sharma | admin@ethara.com | Admin@123 | Admin |
-| Priya Patel | priya@ethara.com | Member@123 | Member |
-| Arjun Mehta | arjun@ethara.com | Member@123 | Member |
-| Sneha Verma | sneha@ethara.com | Member@123 | Member |
+| Rahul Sharma | rahul.admin@gmail.com | Admin@123 | Admin |
+| Priya Patel | priya.patel@gmail.com | Member@123 | Member |
+| Arjun Mehta | arjun.mehta@gmail.com | Member@123 | Member |
+| Sneha Verma | sneha.verma@gmail.com | Member@123 | Member |
 
 > **Admin** can create/edit/delete projects, assign members, manage all tasks and view full dashboard.
 

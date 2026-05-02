@@ -19,10 +19,10 @@ const seed = async () => {
   const adminPass = await bcrypt.hash('Admin@123', 10);
   const memberPass = await bcrypt.hash('Member@123', 10);
 
-  const admin = await User.create({ name: 'Rahul Sharma', email: 'admin@ethara.com', password: adminPass, role: 'admin' });
-  const alice = await User.create({ name: 'Priya Patel', email: 'priya@ethara.com', password: memberPass, role: 'member' });
-  const bob = await User.create({ name: 'Arjun Mehta', email: 'arjun@ethara.com', password: memberPass, role: 'member' });
-  const carol = await User.create({ name: 'Sneha Verma', email: 'sneha@ethara.com', password: memberPass, role: 'member' });
+  const admin = await User.create({ name: 'Rahul Sharma', email: 'rahul.admin@gmail.com', password: adminPass, role: 'admin' });
+  const alice = await User.create({ name: 'Priya Patel', email: 'priya.patel@gmail.com', password: memberPass, role: 'member' });
+  const bob = await User.create({ name: 'Arjun Mehta', email: 'arjun.mehta@gmail.com', password: memberPass, role: 'member' });
+  const carol = await User.create({ name: 'Sneha Verma', email: 'sneha.verma@gmail.com', password: memberPass, role: 'member' });
   console.log('Users created');
 
   // Create projects
@@ -83,10 +83,10 @@ const seed = async () => {
   console.log('Tasks created');
   console.log('\n✅ Seed completed successfully!\n');
   console.log('Login credentials:');
-  console.log('Admin  → admin@ethara.com  / Admin@123');
-  console.log('Priya  → priya@ethara.com  / Member@123');
-  console.log('Arjun  → arjun@ethara.com  / Member@123');
-  console.log('Sneha  → sneha@ethara.com  / Member@123');
+  console.log('Admin  → rahul.admin@gmail.com  / Admin@123');
+  console.log('Priya  → priya.patel@gmail.com  / Member@123');
+  console.log('Arjun  → arjun.mehta@gmail.com  / Member@123');
+  console.log('Sneha  → sneha.verma@gmail.com  / Member@123');
 
   await mongoose.disconnect();
 };

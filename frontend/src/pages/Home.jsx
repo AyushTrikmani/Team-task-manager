@@ -114,12 +114,12 @@ const Home = () => {
         <div className="cta-credentials">
           <div className="cred-card">
             <span className="cred-role admin">Admin</span>
-            <p>admin@ethara.com</p>
+            <p>rahul.admin@gmail.com</p>
             <p>Admin@123</p>
           </div>
           <div className="cred-card">
             <span className="cred-role member">Member</span>
-            <p>priya@ethara.com</p>
+            <p>priya.patel@gmail.com</p>
             <p>Member@123</p>
           </div>
         </div>
