@@ -1,6 +1,16 @@
 const Project = require('../models/Project');
 const User = require('../models/User');
 
+const formatProject = (project) => {
+  const obj = project.toObject ? project.toObject() : project;
+  obj.public_id = obj._id;
+  if (obj.created_by?.name) obj.creator_name = obj.created_by.name;
+  if (Array.isArray(obj.members)) {
+    obj.members = obj.members.map(m => m._id ? { ...m, id: m._id } : m);
+  }
+  return obj;
+};
+
 exports.createProject = async (req, res) => {
   const { name, description, member_ids } = req.body;
   if (!name) return res.status(400).json({ message: 'Project name required' });
@@ -8,7 +18,7 @@ exports.createProject = async (req, res) => {
     const members = [req.user.id, ...(member_ids || [])];
     const unique = [...new Set(members.map(String))];
     const project = await Project.create({ name, description, created_by: req.user.id, members: unique });
-    res.status(201).json(project);
+    res.status(201).json(formatProject(project));
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -27,7 +37,7 @@ exports.updateProject = async (req, res) => {
       project.members = [...new Set(members)];
     }
     await project.save();
-    res.json(project);
+    res.json(formatProject(project));
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -41,7 +51,7 @@ exports.getProjects = async (req, res) => {
     } else {
       projects = await Project.find({ members: req.user.id }).populate('created_by', 'name').sort({ createdAt: -1 });
     }
-    res.json(projects);
+    res.json(projects.map(formatProject));
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -51,11 +61,11 @@ exports.getProject = async (req, res) => {
   try {
     const project = await Project.findById(req.params.id)
       .populate('created_by', 'name')
-      .populate('members', 'id name email role');
+      .populate('members', 'name email role');
     if (!project) return res.status(404).json({ message: 'Project not found' });
     if (req.user.role !== 'admin' && !project.members.some(m => String(m._id) === String(req.user.id)))
       return res.status(404).json({ message: 'Project not found' });
-    res.json(project);
+    res.json(formatProject(project));
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

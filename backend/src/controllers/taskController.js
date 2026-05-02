@@ -4,6 +4,13 @@ const Project = require('../models/Project');
 const VALID_STATUSES = ['todo', 'in_progress', 'done'];
 const VALID_PRIORITIES = ['low', 'medium', 'high'];
 
+const formatTask = (task) => {
+  const obj = task.toObject ? task.toObject() : task;
+  obj.public_id = obj._id;
+  if (obj.assigned_to?.name) obj.assignee_name = obj.assigned_to.name;
+  return obj;
+};
+
 const getAccessibleProject = async (projectId, user) => {
   const project = await Project.findById(projectId);
   if (!project) return null;
@@ -34,7 +41,7 @@ exports.createTask = async (req, res) => {
       assigned_to: assigned_to || null,
       created_by: req.user.id,
     });
-    res.status(201).json(task);
+    res.status(201).json(formatTask(task));
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -48,7 +55,7 @@ exports.getTasks = async (req, res) => {
     const tasks = await Task.find({ project_id: project._id })
       .populate('assigned_to', 'name')
       .sort({ createdAt: -1 });
-    res.json(tasks);
+    res.json(tasks.map(formatTask));
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -84,7 +91,7 @@ exports.updateTask = async (req, res) => {
     if (hasAssignedTo) task.assigned_to = assigned_to || null;
 
     await task.save();
-    res.json(task);
+    res.json(formatTask(task));
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
