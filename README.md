@@ -12,7 +12,7 @@ A full-stack team task management application built with React, Node.js, Express
 
 | Name | Email | Password | Role |
 |------|-------|----------|------|
-| Rahul Sharma | rahul.admin@gmail.com | Admin@123 | Admin |
+| Ayush Trikmani | ayush.admin@gmail.com | Admin@123 | Admin |
 | Priya Patel | priya.patel@gmail.com | Member@123 | Member |
 | Arjun Mehta | arjun.mehta@gmail.com | Member@123 | Member |
 | Sneha Verma | sneha.verma@gmail.com | Member@123 | Member |

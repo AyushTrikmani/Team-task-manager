@@ -114,7 +114,7 @@ const Home = () => {
         <div className="cta-credentials">
           <div className="cred-card">
             <span className="cred-role admin">Admin</span>
-            <p>rahul.admin@gmail.com</p>
+            <p>ayush.admin@gmail.com</p>
             <p>Admin@123</p>
           </div>
           <div className="cred-card">

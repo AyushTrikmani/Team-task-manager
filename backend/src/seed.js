@@ -19,7 +19,7 @@ const seed = async () => {
   const adminPass = await bcrypt.hash('Admin@123', 10);
   const memberPass = await bcrypt.hash('Member@123', 10);
 
-  const admin = await User.create({ name: 'Rahul Sharma', email: 'rahul.admin@gmail.com', password: adminPass, role: 'admin' });
+  const admin = await User.create({ name: 'Ayush Trikmani', email: 'ayush.admin@gmail.com', password: adminPass, role: 'admin' });
   const alice = await User.create({ name: 'Priya Patel', email: 'priya.patel@gmail.com', password: memberPass, role: 'member' });
   const bob = await User.create({ name: 'Arjun Mehta', email: 'arjun.mehta@gmail.com', password: memberPass, role: 'member' });
   const carol = await User.create({ name: 'Sneha Verma', email: 'sneha.verma@gmail.com', password: memberPass, role: 'member' });
@@ -83,7 +83,7 @@ const seed = async () => {
   console.log('Tasks created');
   console.log('\n✅ Seed completed successfully!\n');
   console.log('Login credentials:');
-  console.log('Admin  → rahul.admin@gmail.com  / Admin@123');
+  console.log('Admin  → ayush.admin@gmail.com  / Admin@123');
   console.log('Priya  → priya.patel@gmail.com  / Member@123');
   console.log('Arjun  → arjun.mehta@gmail.com  / Member@123');
   console.log('Sneha  → sneha.verma@gmail.com  / Member@123');
