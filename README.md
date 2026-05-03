@@ -1,5 +1,7 @@
 # ⚡ TaskFlow - Premium Team Task Manager
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-🚀_Click_Here-5865F2?style=for-the-badge)](https://team-task-manager-production-45e9.up.railway.app/)
+
 TaskFlow is a full-featured, professional Team Task Management web application built with the MERN stack (MongoDB, Express, React, Node.js). 
 
 It is designed to help teams organize projects, track progress via Kanban boards, and communicate efficiently in a sleek, modern, and dark-mode-first environment.
