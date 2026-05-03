@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://team-task-manager-production-45e9.up.railway.app/sitemap.xml
