@@ -30,7 +30,7 @@ const Login = () => {
 
   const quickFill = (role) => {
     if (role === 'admin') setForm({ email: 'ayush.admin@gmail.com', password: 'Admin@123' });
-    if (role === 'member') setForm({ email: 'priya.patel@gmail.com', password: 'Member@123' });
+    if (role === 'member') setForm({ email: 'arjun.mehta@gmail.com', password: 'Member@123' });
   };
 
   return (

@@ -115,7 +115,7 @@ const Home = () => {
           </div>
           <div className="cred-card">
             <span className="cred-role member">Member Demo</span>
-            <p>priya.patel@gmail.com</p>
+            <p>arjun.mehta@gmail.com</p>
           </div>
         </div>
         <Link to="/login" className="btn-hero-primary" style={{padding: '14px 40px'}}>Login Now →</Link>
